@@ -1,0 +1,14 @@
+# Python >=3.10 recommended.
+
+numpy>=1.23
+scipy>=1.9
+hdf5storage>=0.1.19
+configargparse>=1.4
+tqdm>=4.64
+tensorboard>=2.10
+torch>=2.0
+
+# matlabengine
+# required, but the correct install method/version depends on your installed MATLAB release.
+#   python -m pip install matlabengine==<version-compatible-with-your-MATLAB-release>
+# See MathWorks' MATLAB Engine API for Python installation docs.

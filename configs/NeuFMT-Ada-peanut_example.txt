@@ -1,0 +1,43 @@
+exp_type = 'simu'
+exp_no = 1
+auto = 0
+
+phantom_x = 54
+phantom_y = 54
+phantom_z = 14
+te_maxvol = 2.0
+node_size = 0.1
+tar_shape = peanut
+ray_type = transmissive
+data_name = 'example'
+mua = 0.1
+mus_init = 1.5
+ref = 1.4
+q_dim = 10
+q_gap = 4
+q_offset = 8
+m_dim = 55
+m_gap = 1
+m_offset = 1
+noise_level = 0
+em_scale_gap = 1
+
+enc_type = PE
+enc_level = 4
+layer_dim = 256
+activation_fn = relu
+n_iter = 20000
+loss_type = MSE
+loss_scale = 2e7
+n_regu_term = 1
+regu_type = [MAE]
+regu_scale = [0.1]
+lr_start = 1e-4
+lr_decay_rate = 0.98
+lr_decay_step = 160
+lr_mu = 2e-3
+T_mu = 80
+
+iter_save = 2000
+res_res = 1.1
+query_type = 'grid'
