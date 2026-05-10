@@ -6,5 +6,5 @@ Official implementation for paper: µNeuFMT: Background-Optical-Property-Adaptiv
 ![Static Badge](https://shields.io/github/license/apache/geaflow?logo=apache&label=License&color=blue)
 
 <div align="center">
-<img src="https://github.com/Star6azeR/NeuFMT/blob/main/Concept.png?raw=true" alt="Concept.png" width="600" /> 
+<img src="https://raw.githubusercontent.com/Star6azeR/NeuFMT/main/Concept.png" alt="Concept.png" width="600" /> 
 </div>
