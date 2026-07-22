@@ -1,0 +1,42 @@
+NeuFLIM time-domain input format
+================================
+
+The data directory follows the existing NeuFMT naming rule:
+    <tar_shape>-<exp_type>-<ray_type[:3]>-<data_name>
+
+Required MATLAB files (names and keys are configurable):
+
+1. node.mat / node
+   Shape [Nh, 3]. Mesh-node coordinates.
+
+2. mvec.mat / mvec
+   Shape [Nh, Nd]. Detector projection vectors. The Python code uses P = mvec.T.
+
+3. tphi_ex.mat / tphi_ex
+   Shape [T, Nh, Ns]. Precomputed excitation fluence for every time bin and source.
+
+4. A_em.mat / A_em
+   Shape [Nh, Nh]. Precomputed emission propagation operator:
+       A_em = K1_em^{-1} K0_em
+
+5. B_em.mat / B_em
+   Shape [Nh, Nh]. Precomputed map from nodal fluorescence source density to
+   emission fluence. For a mass-matrix source convention:
+       B_em = K1_em^{-1} M
+   If your source is already an FEM load vector, export the corresponding
+   K1_em^{-1}-based operator instead. NeuFLIM only assumes that B_em maps the
+   nodal source used in training to the next emission field.
+
+6. meas_em_td.mat / meas_em_td
+   Shape [T, Nd, Ns]. Measured or simulated emission TPSFs.
+
+Optional:
+
+7. mask.mat / mask
+   Boolean shape [T, Nd, Ns]. True entries participate in the data loss.
+
+Important:
+- dt and lifetime must use the same time unit (for example, both ns).
+- The exact lifetime recurrence uses gain = 1 - exp(-dt/tau).
+- Set lifetime_scheme=euler to use gain = dt/tau and match an explicit
+  rectangle-rule convolution.
