@@ -7,8 +7,10 @@ configargparse>=1.4
 tqdm>=4.64
 tensorboard>=2.10
 torch>=2.0
+matplotlib>=3.6
 
 # matlabengine
-# required, but the correct install method/version depends on your installed MATLAB release.
+# required by the original NeuFMT MATLAB plotting path, but NeuFLIM_main.py
+# uses matplotlib and does not require MATLAB Engine.
 #   python -m pip install matlabengine==<version-compatible-with-your-MATLAB-release>
 # See MathWorks' MATLAB Engine API for Python installation docs.
