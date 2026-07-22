@@ -18,12 +18,15 @@ def positional_encoding_default(x: torch.Tensor, L=4) -> torch.Tensor:
 
 def positional_encoding_altz(p, L, Lz) -> torch.Tensor:
     """
-    Should return same result as defalut.\n
-    Maps coordinates [x, y, z] in 3-dim to
-    [sin(2^i*x), sin(2^i*y), sin(2^i*z), cos(2^i*x), cos(2^i*y), cos(2^i*y)] (i: 0->L) in (6*L)-dim
+    Maps coordinates [x, y, z] to separate xy/z positional-frequency bands.
+    Frequency tensors follow the input tensor's device and dtype.
     """
-    logseq = torch.logspace(start=0, end=L-1, steps=L, base=2).cuda()
-    logseq_z = torch.logspace(start=0, end=Lz-1, steps=Lz, base=2).cuda()
+    logseq = torch.logspace(
+        start=0, end=L-1, steps=L, base=2, device=p.device, dtype=p.dtype
+    )
+    logseq_z = torch.logspace(
+        start=0, end=Lz-1, steps=Lz, base=2, device=p.device, dtype=p.dtype
+    )
 
     xsin = torch.sin((logseq*math.pi).reshape([1,-1]) * p[:,0].reshape([-1, 1]))
     ysin = torch.sin((logseq*math.pi).reshape([1,-1]) * p[:,1].reshape([-1, 1]))
