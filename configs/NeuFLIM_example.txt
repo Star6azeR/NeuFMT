@@ -1,0 +1,54 @@
+exp_type = simu
+exp_no = 0
+data_dir_rel = ./data/
+save_dir_rel = ./logs/
+tar_shape = 2bar
+ray_type = transmissive
+data_name = neuflim
+noise_level = 0
+
+phantom_x = 64
+phantom_y = 64
+phantom_z = 1
+enc_type = PE
+enc_level = 6
+enc_level_z = 2
+
+# dt and tau must use the same unit; this example uses ns.
+dt = 0.04
+time_window = 1
+measurement_scale = 1.0
+
+node_file = node.mat
+node_key = node
+mvec_file = mvec.mat
+mvec_key = mvec
+a_em_file = A_em.mat
+a_em_key = A_em
+b_em_file = B_em.mat
+b_em_key = B_em
+tphi_ex_file = tphi_ex.mat
+tphi_ex_key = tphi_ex
+measurement_file = meas_em_td.mat
+measurement_key = meas_em
+
+layer_dim = 256
+activation_fn = relu
+yield_min = 0.0
+yield_max = 1.2
+tau_min = 0.05
+tau_max = 3.0
+tau_background = 0.05
+
+n_iter = 16000
+loss_type = MSE
+loss_scale = 1.0
+yield_reg_scale = 0.0
+tau_reg_scale = 0.0
+lr_start = 1e-4
+lr_decay_rate = 0.98
+lr_decay_step = 160
+
+iter_save = 2000
+plot_source = 0
+plot_detector_stride = 8
