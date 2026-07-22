@@ -1,0 +1,79 @@
+# Run with:
+# python NeuFLIM_main.py --config configs/NeuFLIM_peanut_example.txt
+
+exp_type = simu
+exp_no = 0
+data_dir_rel = ./data/
+save_dir_rel = ./logs/
+
+phantom_x = 54
+phantom_y = 54
+phantom_z = 14
+te_maxvol = 2.0
+node_size = 0.1
+tar_shape = peanut
+ray_type = transmissive
+data_name = example_td
+noise_level = 0
+em_scale_gap = 1
+
+# Time-domain files and MATLAB variable names.
+node_file = node.mat
+node_key = node
+mvec_file = mvec.mat
+mvec_key = mvec
+tphi_ex_file = tphi_ex.mat
+tphi_ex_key = tphi_ex
+a_em_file = A_em.mat
+a_em_key = A_em
+b_em_file = B_em.mat
+b_em_key = B_em
+meas_em_file = meas_em_td.mat
+meas_em_key = meas_em_td
+
+# Arrays are expected as [time, node/detector, source].
+tphi_time_axis = 0
+meas_time_axis = 0
+nstep = 200
+dt = 0.04
+lifetime_scheme = exact
+tau_epsilon = 1e-8
+
+# Optional measurement mask. Leave mask_file empty to use all measurements.
+mask_file =
+mask_key = mask
+mask_time_axis = 0
+
+# INR
+enc_type = PE
+enc_level = 4
+enc_level_z = 4
+layer_dim = 256
+activation_fn = relu
+yield_min = 0.0
+yield_max = 1.5
+lifetime_min = 0.01
+lifetime_max = 3.0
+
+# Optimization
+n_iter = 16000
+loss_type = MSE
+loss_scale = 1.0
+measurement_normalization = global_max
+normalization_epsilon = 1e-12
+yield_regu_scale = 1e-6
+lifetime_regu_scale = 1e-6
+lifetime_prior = 0.5
+lr_start = 1e-4
+lr_decay_rate = 0.98
+lr_decay_step = 160
+grad_clip = 1.0
+
+# Saving and plotting
+iter_save = 2000
+res_res = 1.1
+save_measurement = 0
+plot_source_idx = 0
+plot_detector_idx = 0
+plot_log_tpsf = 0
+device =
